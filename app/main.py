@@ -17,9 +17,9 @@ def index():
     return render_template('index.html.jinja', title='Planet Birthdays', form=form, planets=False)
 
 
-def ages(then=datetime.datetime.now()):
+def ages(then=datetime.date.today()):
     print("Getting Ages")
-    now = datetime.datetime.now()
+    now = datetime.date.today()
     days = (now - then).days
     planets = {k: round(days/v, 2) for k, v in Config.planets.items()}
     return planets
