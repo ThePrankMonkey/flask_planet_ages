@@ -1,8 +1,0 @@
-{% extends "base.html.jinja" %}
-
-{% block content %}
-    <h1>Your Ages</h1>
-    {% for planet in planets %}
-    <span>{{ planet }}: {{ planets[planet] }} years old</span><br>
-    {% endfor %}
-{% endblock %}

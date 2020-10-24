@@ -13,17 +13,16 @@ app.config.from_object(Config)
 def index():
     form = BirthdayForm()
     if form.validate_on_submit():
-        # return redirect('/ages', then=form.birthday.data)
-        return ages(form.birthday.data)
-    return render_template('index.html.jinja', title='Sign In', form=form)
+        return render_template('index.html.jinja', title='Planet Birthdays', form=form, planets=ages(form.birthday.data))
+    return render_template('index.html.jinja', title='Planet Birthdays', form=form, planets=False)
 
 
-@app.route("/ages", methods=["GET", "POST"])
-def ages(then=str(datetime.datetime.now())):
+def ages(then=datetime.datetime.now()):
+    print("Getting Ages")
     now = datetime.datetime.now()
     days = (now - then).days
     planets = {k: round(days/v, 2) for k, v in Config.planets.items()}
-    return render_template('ages.html.jinja', planets=planets)
+    return planets
 
 
 if __name__ == "__main":

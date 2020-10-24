@@ -12,4 +12,10 @@
             {% endfor %}
         <p>{{ form.submit() }}</p>
     </form>
+    {% if planets %}
+        <h1>Your Ages</h1>
+        {% for planet in planets %}
+        <span>{{ planet }}: {{ planets[planet] }} years old</span><br>
+        {% endfor %}
+    {% endif %}
 {% endblock %}
