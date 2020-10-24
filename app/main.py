@@ -2,8 +2,8 @@ import datetime
 from flask import Flask
 from flask import render_template, request, redirect
 
-from config import Config
-from form import BirthdayForm
+from .config import Config
+from .form import BirthdayForm
 
 app = Flask(__name__)
 app.config.from_object(Config)
